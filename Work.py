@@ -291,8 +291,24 @@ print(cas_arr(numb))
 
         
 
-  
+#Дано 2 списка: ключи и значения. Создать из них словарь.
+arr1=[1,2,3]
+arr2=['a','b','c']
+def creat_tez(arr1,arr2):
+    tez = {}
+    if len(arr1) > len(arr2):
+        steps = len(arr2)
+    else:
+        steps = len(arr1)
+    for step in range(steps):
+        tez[arr1[step]] = arr2[step]
+    return(tez)
+print('Словарь ',creat_tez(arr1,arr2))
 
 
+
+
+
+        
 
 
