@@ -72,35 +72,28 @@ print('Максимальный элемент',get_max_numb(numbers))
 
 #среднее арифметическое
 def get_average(numbers):
-    amount = 0
-    average = 0
-    for numb in numbers:
-        amount = amount + 1
-    average = get_sum_numb(numbers) / amount
+
+    average = get_sum_numb(numbers) / len(numbers)
     return average
 print('Среднее арифмитическое',get_average(numbers))
 
 
 
-#медианное значение (указание: предварительно упорядочить c помощью mylist.sort())
+###медианное значение (указание: предварительно упорядочить c помощью mylist.sort())
 def get_med_numb(numbers):
-    cur_numb = 0
-    max_numb = 0
-    amount = 0
-    med = 0
-    med_odd = 0
-    men_numb = 0
     numbers.sort()
+    #print('сорт масс',numbers)
     amount = len(numbers)
     if amount % 2 == 0:
         med = amount // 2
-        med_numb = numbers[med-1] + numbers[med]
+        med_numb = (numbers[med-1] + numbers[med]) / 2
         return med_numb
     else:
         med_odd = amount // 2
         med_numb = numbers[med_odd]
         return med_numb
 print('медианое значение',get_med_numb(numbers))
+
 
 
 
@@ -209,7 +202,7 @@ print('Заголовок',switсh_register(string))
 
 
 
-#заменить все гласные на звездочки (hello -> h*ll*)
+##заменить все гласные на звездочки (hello -> h*ll*)
 string = 'hello fritnd add'
 def star(string):
     vowels_tez = ('A', 'E', 'I', 'O', 'U', 'Y','a', 'e', 'i', 'o', 'u', 'y')
@@ -306,8 +299,50 @@ def creat_tez(arr1,arr2):
 print('Словарь ',creat_tez(arr1,arr2))
 
 
+#Чтение из файла
+##Посчитать количество строк, букв, слов в файле
+##Найти среднюю и медианную длину слова.
+##Построить словарь частотности слов, вывести 10 самых частых слов в тексте.
+##Количество абзацев
+##Посчитать количество слов, начинающихся на а или А
+##Посчитать количество знаков препинания
 
 
+
+link = 'belkin.txt_Ascii.txt'
+def open_file(link):
+    temp = []
+    numb = 0
+    len_arr = []
+    fopen = open(link,'r')
+    for line in fopen:
+        
+         numb += 1
+         
+    print('Строк',numb)
+
+    numb = 0
+    fopen = open(link,'r')
+    string = fopen.read().replace('\n', '').replace('\r', '').replace('- ', '').replace('[1-9]','')
+    stp = string.split()
+
+    fopen = open(link,'r')
+    lett_arr = fopen.read().replace('\n', '').replace('\r', '').replace('- ', '').replace('[1-9]','').replace(' ','')
+
+    print('Букв',len(lett_arr))
+    print('Слов', len(stp))
+
+    for word in stp:
+        
+        if word[0] == 'А' or word[0] == 'а':
+            numb += 1
+        len_arr.append(len(word))
+    
+    print('сред длинна слова',get_average(len_arr))
+    print('мед длинна слова',get_med_numb(len_arr))
+    print('Колво слов Нач с A-a',numb)
+    
+print(open_file(link))
 
         
 
