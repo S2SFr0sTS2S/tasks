@@ -203,16 +203,19 @@ print('Заголовок',switсh_register(string))
 
 
 ##заменить все гласные на звездочки (hello -> h*ll*)
-string = 'hello fritnd add'
-def star(string):
-    vowels_tez = ('A', 'E', 'I', 'O', 'U', 'Y','a', 'e', 'i', 'o', 'u', 'y')
-    for lett in string:
-        if lett in vowels_tez:
-            string = string.replace(lett,'*')
-        else:
-            pass
-    return(string)
-print("замена гласных на *",star(string))
+string = 'hello friend add'
+def switch(string):
+    vow=['A','E','I','U','Y','O','a','o','e','i','u','y']
+    numb=-1
+    letts = list(string)
+    for lett in letts:
+        numb += 1
+        if lett in vow:
+            letts[numb] = '*'
+    string = ''.join(letts)
+    return string
+
+print('Замена гласных на звездочки',switch(string))
 
 
 
@@ -308,9 +311,10 @@ print('Словарь ',creat_tez(arr1,arr2))
 ##Посчитать количество знаков препинания
 
 
-
 link = 'belkin.txt_Ascii.txt'
 def open_file(link):
+
+    
     temp = []
     numb = 0
     len_arr = []
@@ -341,9 +345,19 @@ def open_file(link):
     print('сред длинна слова',get_average(len_arr))
     print('мед длинна слова',get_med_numb(len_arr))
     print('Колво слов Нач с A-a',numb)
-    
-print(open_file(link))
 
+    ##Построить словарь частотности слов
+    jour = {}
+    test = []
+    for word in stp:
+        jour[word] = stp.count(word)
+    #print (jour)
         
+    
+    
+open_file(link)
+
+
+
 
 
